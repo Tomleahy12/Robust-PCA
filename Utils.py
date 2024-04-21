@@ -14,9 +14,6 @@ Note functions in here may not be used but are left for future references.
 """
 
 def image_standardize(data):
-    # Calculate the mean (along the 0-dimension, i.e., for each feature/column)
-    mean = data.mean(dim=0, keepdim=True)
-    # Standardize the dataset
     standardized_data = data / 255
     return standardized_data
 
@@ -30,9 +27,7 @@ def build_data_set(image_folder, start=0, end=None, standardized=False):
     end (int): Ending index of the images to combine (exclusive). If None, all images from start to the end of the folder will be used.
     standardized (bool): If True, standardizes the data. Default is False.
     """
-    # Get the list of image file names
     image_files = sorted([f for f in os.listdir(image_folder) if f.endswith(('.jpg', '.png', '.jpeg', '.bmp'))])
-    # Check start and end boundaries
     if start < 0:
         start = 0
     if end is None or end > len(image_files):
@@ -47,11 +42,9 @@ def build_data_set(image_folder, start=0, end=None, standardized=False):
             image_tensor = torch.tensor(image_greyed, dtype=torch.float32).flatten()
             image_tensors.append(image_tensor)
 
-    # Stack all image tensors
     data_set = torch.stack(image_tensors)
 
     if standardized:
-        # Placeholder for the standardize_data function; define it according to your requirements
         data_set = image_standardize(data_set)
 
     return data_set
@@ -99,11 +92,6 @@ def rand_noise_normal(img_tensor, scale = 1):
     return corrupted_img,noise
 
 def standardize_data(data):
-    # Calculate the mean (along the 0-dimension, i.e., for each feature/column)
-    mean = data.mean(dim=0, keepdim=True)
-    # Calculate the standard deviation (along the 0-dimension)
-    std = data.std(dim=0, keepdim=True)
-    # Standardize the dataset
     standardized_data = data / 252
     return standardized_data
 
