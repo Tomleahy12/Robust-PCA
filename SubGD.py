@@ -47,7 +47,7 @@ class SubGD:
                           torch.sum(self.w[:, :n_rows] ** 2) -\
                               torch.sum(self.w[:, n_rows:] ** 2))     
      
-    def fit(self, iterations = 1000 ,  tolerance = 1e-4, mu = None, step= 'classic', beta_ = .95, gamma_ = 1/2, alpha = 1, prints = True, iter_prints = 100):
+    def fit(self, iterations = 1000 ,  tolerance = 1e-4, mu = None, beta_ = .95, gamma_ = 1/2, alpha = 1, prints = True, iter_prints = 100):
         """
         Solver
         :params iterations: max iterations to run for
@@ -68,11 +68,11 @@ class SubGD:
 
             if mu is None:
                 mu = 1
-                step_size = self.step_solve_(mu, i, subgradient, gamma = gamma_, step_=step)
+                step_size = self.step_solve_(mu, i, subgradient, gamma = gamma_)
                 mu = None
             else:
                 mu_store = mu
-                step_size = self.step_solve_(mu, i, subgradient, gamma = gamma_, step_=step)
+                step_size = self.step_solve_(mu, i, subgradient, gamma = gamma_)
                 mu = mu_store
             
             self.w = self.w - torch.mul(step_size, subgradient)
@@ -84,10 +84,10 @@ class SubGD:
             errors.append(value)
             if prints and i % iter_prints == 0:
                 print(f" error rate: {value} at iteration {i}")
-                print(f" d station dis: {torch.abs(torch.sum(self.w[:,:n_rows]**2) - torch.sum(self.w[:,n_rows:]**2))}")
-
+               
         self.sparse = self.data_ - torch.matmul(self.w[:,:n_rows].T , self.w[:,n_rows:]) 
-        return self.w[:,:n_rows], self.w[:,n_rows:], self.sparse, errors
+        
+        return torch.matmul(self.w[:, :n_rows], self.w[:, :n_rows].T), self.sparse
     
     def subgrad(self, beta):
         """
@@ -131,7 +131,7 @@ class SubGD:
         return 2 * self.alpha *  torch.matmul(self.custom_sign(torch.matmul(self.w[:, :n_rows], self.w[:, :n_rows].T)
                                                                 - torch.matmul(self.w[:, n_rows:],self.w[:, n_rows:].T)), argument)
     
-    def step_solve_(self, mu_0, k, sub_gradient, gamma,step_):
+    def step_solve_(self, mu_0, k, sub_gradient, gamma):
         """
         Step Size solver subroutine, solves s.t. self.w > 0 
 
@@ -147,10 +147,7 @@ class SubGD:
             if (self.w - mu_k * sub_gradient > 0).all():
                 break
             else:
-                if step_ == 'classic':
-                  mu_k *= torch.tensor(mu_0 * (1/k ** gamma), dtype=torch.float64)
-                else:
-                  mu_k *= torch.tensor(mu_0 * gamma, dtype=torch.float64)
+                mu_k *= torch.tensor(mu_0 * gamma, dtype=torch.float64)
                     
         return mu_k
   
