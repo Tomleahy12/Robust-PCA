@@ -101,15 +101,9 @@ for iteration, rank in enumerate(ranks_):
 
     Rank for problem is: 2
      error rate: 0.6784954730833966 at iteration 100
-     error rate: 0.5962345437310731 at iteration 200
-     error rate: 0.4467942757271885 at iteration 300
-     error rate: 0.35524286351869344 at iteration 400
-     error rate: 0.2931604221703815 at iteration 500
-     error rate: 0.25008451743468385 at iteration 600
-     error rate: 0.22627917449117355 at iteration 700
-     error rate: 0.21020006573346095 at iteration 800
-     error rate: 0.17579457504463986 at iteration 900
-     error rate: 0.1738911433446629 at iteration 1000
+    .
+    .
+    .
      error rate: 0.17368023565056204 at iteration 1100
     Total duration: 63.37 seconds
     
@@ -130,10 +124,7 @@ display(Image(filename='ExampleRPCA.gif'))
 
     GIF saved successfully as ExampleRPCA.gif.
     
-
-
-    <IPython.core.display.Image object>
-
+ ![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleRPCA1.gif)
 
 
 ```python
@@ -149,7 +140,6 @@ display(Image(filename='ExampleGifcorrupted.gif'))
 ```
 
     GIF saved successfully.
-    ![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleRPCA1.gif)
 
 ```python
 # If the rank is unknown, pass a list of guesses and solve iteratively, and store the results using the code that i gave below
