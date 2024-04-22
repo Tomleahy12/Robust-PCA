@@ -83,10 +83,6 @@ for iteration, rank in enumerate(ranks_):
                         gamma_ = .2, 
                         prints = True,
                         iter_prints = 100)
-    # On large datasets, we can have 2 instances of a problem floating around for brief periods on device. Consumes VRAM. If solving iteratively delete the object
-
-    del(subdd_model)
-
     # I suggest removing torch tensors from device before storing
     # best practice is to always clone the tensor.
     sparse = S.clone().detach().cpu().numpy()
@@ -154,15 +150,12 @@ for iteration, rank in enumerate(ranks_):
                         gamma_ = .5, 
                         prints = True,
                         iter_prints = 10)
-    del(subdd_model) # On large datasets, we can have 2 instances of a problem floating around for brief periods on device. Consumes VRAM.
-    # I suggest removing torch tensors from device before storing
     sparsevc = S.clone().detach().cpu().numpy()
     sparse_results_.append(sparse)
     end_time = time.time()
     duration_seconds = end_time - start_time
     print(f"Total duration: {duration_seconds:.2f} seconds")
 ```
-
     Rank for problem is: 4
      error rate: 0.7242109180848748 at iteration 10
       .
