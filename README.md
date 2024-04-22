@@ -59,10 +59,7 @@ display(Image(filename='ExampleGif.gif'))
 ```
 
     GIF saved successfully.
-    
-
-
-    <IPython.core.display.Image object>
+![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleGif.gif)
 
 
 ## Call SubGD Solver
@@ -116,17 +113,17 @@ for iteration, rank in enumerate(ranks_):
 sparse_show = torch.tensor(sparse_results_[0]).numpy()
 
 # Takes the top 10% of values and maximizes. Rest are 0. 
-percentile_animated_gif(sparse_show, output_filename='ExampleRPCA.gif',percentile_cutoff=95, frame_duration=5, image_size=(120, 160))
+percentile_animated_gif(sparse_show, output_filename='ExampleRPCA1.gif',percentile_cutoff=95, frame_duration=5, image_size=(120, 160))
 
 from IPython.display import Image, display
-display(Image(filename='ExampleRPCA.gif'))
+display(Image(filename='ExampleRPCA1.gif'))
 ```
 
-    GIF saved successfully as ExampleRPCA.gif.
+    GIF saved successfully as ExampleRPCA1.gif.
     
  ![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleRPCA1.gif)
 
-
+### Example of Highly Corrupted Image 
 ```python
 # we call a different data set building function that will also tamper with the images. 
 data_frame_vc = build_corrupted_imageset(image_folder, start = 600, end=820,method = 'Remove', corrupt_param= .7, standardized=True )
@@ -138,9 +135,9 @@ return_animated_gif(data_frame_, output_filename='ExampleGifcorrupted.gif', fram
 from IPython.display import Image, display
 display(Image(filename='ExampleGifcorrupted.gif'))
 ```
-
     GIF saved successfully.
-
+![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleGifcorrupted.gif)
+### Call the Solver
 ```python
 # If the rank is unknown, pass a list of guesses and solve iteratively, and store the results using the code that i gave below
 # we only run for a brief amount of time on local in this example.
@@ -173,9 +170,7 @@ for iteration, rank in enumerate(ranks_):
       .
      error rate: 0.7254877602446004 at iteration 4990
     Total duration: 358.61 seconds
-    
-
-
+### Returns  
 ```python
 # Takes the top 10% of values and maximizes. Rest are 0. 
 percentile_animated_gif(sparsevc, output_filename='ExampleRPCA.gif',percentile_cutoff=96, frame_duration=5, image_size=(120, 160))
@@ -184,8 +179,4 @@ display(Image(filename='ExampleRPCA.gif'))
 ```
 
     GIF saved successfully as ExampleRPCA.gif.
-    
-
-
-    <IPython.core.display.Image object>
-
+![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleRPCA.gif)
