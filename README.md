@@ -149,12 +149,7 @@ display(Image(filename='ExampleGifcorrupted.gif'))
 ```
 
     GIF saved successfully.
-    
-
-
-    <IPython.core.display.Image object>
-
-
+    ![Alt Text]([https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleRPCA1.gif))
 
 ```python
 # If the rank is unknown, pass a list of guesses and solve iteratively, and store the results using the code that i gave below
