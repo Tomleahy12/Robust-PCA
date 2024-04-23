@@ -132,7 +132,8 @@ from IPython.display import Image, display
 display(Image(filename='ExampleGifcorrupted.gif'))
 ```
 GIF saved successfully.
-![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleGifcorrupted.gif)
+
+![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleGifcorrupted.gif)
 
 ### Call the Solver
 ```python
