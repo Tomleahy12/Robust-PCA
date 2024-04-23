@@ -59,7 +59,7 @@ display(Image(filename='ExampleGif.gif'))
 ```
 
     GIF saved successfully.
-![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleGif.gif)
+![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleGif.gif)
 
 
 ## Call SubGD Solver
@@ -117,7 +117,7 @@ display(Image(filename='ExampleRPCA1.gif'))
 
     GIF saved successfully as ExampleRPCA1.gif.
     
- ![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleRPCA1.gif)
+ ![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleRPCA1.gif)
 
 ### Example of Highly Corrupted Image 
 ```python
@@ -146,7 +146,6 @@ for iteration, rank in enumerate(ranks_):
     L,S = subdd_model.fit(iterations = 5000,
                         tolerance = .1,
                         mu = .9, 
-                        beta_ = .95,
                         gamma_ = .5, 
                         prints = True,
                         iter_prints = 10)
@@ -169,6 +168,7 @@ for iteration, rank in enumerate(ranks_):
 percentile_animated_gif(sparsevc, output_filename='ExampleRPCA.gif',percentile_cutoff=96, frame_duration=5, image_size=(120, 160))
 from IPython.display import Image, display
 display(Image(filename='ExampleRPCA.gif'))
+![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleRPCA.gif)
 ```
 
     GIF saved successfully as ExampleRPCA.gif.
