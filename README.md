@@ -117,7 +117,7 @@ display(Image(filename='ExampleRPCA1.gif'))
 
     GIF saved successfully as ExampleRPCA1.gif.
     
- ![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleRPCA1.gif)
+![Alt Text](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleRPCA1.gif)
 
 ### Example of Highly Corrupted Image 
 ```python
@@ -131,8 +131,9 @@ return_animated_gif(data_frame_, output_filename='ExampleGifcorrupted.gif', fram
 from IPython.display import Image, display
 display(Image(filename='ExampleGifcorrupted.gif'))
 ```
-    GIF saved successfully.
+GIF saved successfully.
 ![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleGifcorrupted.gif)
+
 ### Call the Solver
 ```python
 # If the rank is unknown, pass a list of guesses and solve iteratively, and store the results using the code that i gave below
@@ -168,8 +169,7 @@ for iteration, rank in enumerate(ranks_):
 percentile_animated_gif(sparsevc, output_filename='ExampleRPCA.gif',percentile_cutoff=96, frame_duration=5, image_size=(120, 160))
 from IPython.display import Image, display
 display(Image(filename='ExampleRPCA.gif'))
-![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleRPCA.gif)
 ```
 
     GIF saved successfully as ExampleRPCA.gif.
-![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/ExampleRPCA.gif)
+![Alt](https://github.com/Tomleahy12/Robust-PCA/blob/main/Results/ExampleRPCA.gif)
